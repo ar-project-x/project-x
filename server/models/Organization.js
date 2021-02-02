@@ -4,7 +4,7 @@ const organizationSchema = mongoose.Schema(
   {
     name: {
       type: String,
-      required: true
+      required: [true, 'Organization name is required']
     },
     address: {
       type: mongoose.Types.ObjectId,

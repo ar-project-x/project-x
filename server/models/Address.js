@@ -4,22 +4,22 @@ const addressSchema = mongoose.Schema(
   {
     street1: {
       type: String,
-      required: true
+      required: [true, 'Street is required']
     },
     street2: {
       type: String
     },
     city: {
       type: String,
-      required: true
+      required: [true, 'City is required']
     },
     state: {
       type: String,
-      required: true
+      required: [true, 'State is required']
     },
     zipCode: {
       type: String,
-      required: true
+      required: [true, 'Zip code is required']
     },
     createdBy: {
       type: mongoose.Types.ObjectId,
