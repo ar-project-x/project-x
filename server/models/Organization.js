@@ -13,7 +13,13 @@ const organizationSchema = mongoose.Schema(
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: 'User'
-    }
+    },
+    members: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
+      }
+    ]
   },
   {
     timestamps: true

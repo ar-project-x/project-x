@@ -15,8 +15,10 @@ const authUser = asyncHandler(async (req, res) => {
       _id: user._id,
       firstName: user.firstName,
       lastName: user.lastName,
+      middleInitial: user.middleInitial,
       email: user.email,
       isAdmin: user.isAdmin,
+      roles: user.roles,
       token: generateToken(user._id)
     });
   } else {
@@ -28,7 +30,16 @@ const authUser = asyncHandler(async (req, res) => {
 // @route POST /api/users
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { firstName, lastName, email, password, title, isAdmin } = req.body;
+  const {
+    firstName,
+    lastName,
+    middleInitial,
+    email,
+    password,
+    title,
+    isAdmin,
+    roles
+  } = req.body;
 
   const userExists = await User.findOne({ email });
 
@@ -39,10 +50,12 @@ const registerUser = asyncHandler(async (req, res) => {
   const user = await User.create({
     firstName,
     lastName,
+    middleInitial,
     email,
     password,
     title,
-    isAdmin
+    isAdmin,
+    roles
   });
 
   if (user) {
@@ -50,8 +63,10 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user._id,
       firstName: user.firstName,
       lastName: user.lastName,
+      middleInitial: user.middleInitial,
       email: user.email,
       isAdmin: user.isAdmin,
+      roles: user.roles,
       token: generateToken(user._id)
     });
   } else {

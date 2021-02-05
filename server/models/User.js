@@ -11,6 +11,10 @@ const userSchema = mongoose.Schema(
       type: String,
       required: [true, 'Last name is required']
     },
+    middleInitial: {
+      type: String,
+      maxlength: 2
+    },
     email: {
       type: String,
       required: [true, 'Email is required'],
@@ -34,6 +38,7 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false
     },
+    roles: [String],
     organization: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Organization'
